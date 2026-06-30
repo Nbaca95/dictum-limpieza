@@ -1,0 +1,13 @@
+---
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+---
+<div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:shadow-md hover:border-cyan-200 transition-all duration-200 flex items-center space-x-3 group">
+  <div class="w-8 h-8 rounded-lg bg-cyan-50 text-cyan-600 flex items-center justify-center font-bold group-hover:bg-[#0074B7] group-hover:text-white transition-colors">
+    ✓
+  </div>
+  <p class="text-slate-700 font-medium text-sm sm:text-base">{name}</p>
+</div>

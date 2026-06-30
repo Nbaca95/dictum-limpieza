@@ -1,0 +1,98 @@
+---
+---
+<nav class="absolute top-0 left-0 w-full z-50 text-white bg-transparent">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-32 py-2">
+      
+      <!-- CONTENEDOR DEL LOGO -->
+      <a href="#inicio" class="block h-28 md:h-32 flex items-center transform transition-transform hover:scale-105 select-none">
+        <img 
+          src="/images/Logo2.png" 
+          alt="Dictum Limpieza Logo" 
+          class="h-full w-auto object-contain max-h-[110px] md:max-h-[130px]" 
+          loading="eager"
+        />
+      </a>
+      
+      <!-- MENU ESCRITORIO (Oculto en móviles) -->
+      <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-wider items-center">
+        <a href="#inicio" class="text-cyan-300 border-b-2 border-cyan-300 pb-1">Inicio</a>
+        <a href="#productos" class="hover:text-cyan-200 transition-colors">Catálogo de Productos</a>
+        <a href="#servicios" class="hover:text-cyan-200 transition-colors">Servicios</a>
+        <a href="#contacto" class="hover:text-cyan-200 transition-colors">Contacto</a>
+      </div>
+
+      <!-- BOTÓN HAMBURGUESA (Visible solo en móviles) -->
+      <div class="flex md:hidden">
+        <button 
+          id="menu-toggle" 
+          type="button" 
+          class="inline-flex items-center justify-center p-2 rounded-xl text-white hover:text-cyan-300 hover:bg-white/10 focus:outline-none transition-all"
+          aria-label="Abrir menú"
+        >
+          <!-- Icono de Hamburguesa (Líneas) -->
+          <svg id="hamburger-icon" class="block h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <!-- Icono de Cerrar (X) - Oculto por defecto -->
+          <svg id="close-icon" class="hidden h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- MENÚ DESPLEGABLE MÓVIL (Oculto por defecto con max-h-0) -->
+  <div 
+    id="mobile-menu" 
+    class="md:hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-[#002B54]/95 backdrop-blur-md border-b border-white/10"
+  >
+    <div class="px-4 pt-2 pb-6 space-y-3 font-bold uppercase tracking-wide text-center">
+      <a href="#inicio" class="mobile-link block py-3 rounded-xl hover:bg-white/10 text-cyan-300 transition-all">Inicio</a>
+      <a href="#productos" class="mobile-link block py-3 rounded-xl hover:bg-white/10 hover:text-cyan-200 transition-all">Catálogo de Productos</a>
+      <a href="#servicios" class="mobile-link block py-3 rounded-xl hover:bg-white/10 hover:text-cyan-200 transition-all">Servicios</a>
+      <a href="#contacto" class="mobile-link block py-3 rounded-xl hover:bg-white/10 hover:text-cyan-200 transition-all">Contacto</a>
+    </div>
+  </div>
+</nav>
+
+<!-- SCRIPT DE INTERACTIVIDAD PARA EL MENÚ MÓVIL -->
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const hamburgerIcon = document.getElementById('hamburger-icon');
+  const closeIcon = document.getElementById('close-icon');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  function toggleMenu() {
+    if (mobileMenu && hamburgerIcon && closeIcon) {
+      const isExpanded = mobileMenu.style.maxHeight && mobileMenu.style.maxHeight !== '0px';
+      
+      if (isExpanded) {
+        // Cerrar menú
+        mobileMenu.style.maxHeight = '0px';
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      } else {
+        // Abrir menú (se calcula dinámicamente según el contenido interno)
+        mobileMenu.style.maxHeight = `${mobileMenu.scrollHeight}px`;
+        hamburgerIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      }
+    }
+  }
+
+  // Evento al hacer clic en el botón de hamburguesa
+  menuToggle?.addEventListener('click', toggleMenu);
+
+  // Cerrar automáticamente el menú al hacer clic en cualquier enlace interno (Anchor Links)
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (mobileMenu && mobileMenu.style.maxHeight !== '0px') {
+        toggleMenu();
+      }
+    });
+  });
+</script>

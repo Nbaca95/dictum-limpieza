@@ -1,0 +1,325 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+// IMPORTACIÓN DE ICONOS INDUSTRIALES DE LUCIDE (AMPLIADA)
+import { 
+  Sparkles, 
+  Heater, 
+  WashingMachine, 
+  SquareSplitHorizontal,
+  Wrench,
+  ShieldCheck,
+  GraduationCap,
+  FileBarChart,
+  Flame,      // Para líneas de gas y cocina
+  Zap,        // Para electricidad
+  Snowflake,  // Para refrigeración
+  Cpu         // Para certificación Rational
+} from 'lucide-astro';
+
+// Estructura de datos del catálogo 
+const columnasCatalogo = [
+  {
+    titulo: "LIMPIEZA GENERAL",
+    icon: Sparkles,
+    productos: [
+      "Aromatizante Ambiental", "Desinfectante Profundo", "Sanitizante de Áreas", 
+      "Jabón de Mano Sanitizante", "Limpiador de Baños", "Limpiador de Pisos Cerámicos",
+      "Abrillantador de Superficies y Muebles (Nice)", "Limpiador de Vidrios", 
+      "Alcohol 70%", "Cloro al 6%", "Alcohol Gel"
+    ]
+  },
+  {
+    titulo: "COCINA",
+    icon: Heater,
+    productos: [
+      "Limpiador de Hornos", "Limpiador de Parillas", "Limpiador de Utensilios de Cocina",
+      "Jabón Líquido de Vajillas", "Pulidor de Acero Inoxidable", 
+      "Sanitizante grado alimenticio", "Bio-Zyme Destruye Bact. Para trampa de Grasa",
+      "Desengrasante Multiuso"
+    ]
+  },
+  {
+    titulo: "LAVANDERÍA",
+    icon: WashingMachine,
+    productos: [
+      "Suavizante de Telas", "Detergente Líquido", "Refrescante de Ropa", "Desmanchador Textil"
+    ]
+  },
+  {
+    titulo: "MÁQUINA LAVAPLATOS",
+    icon: SquareSplitHorizontal,
+    productos: [
+      "Jabón Líquido de Máquina Lavaplatos", "Rinse Machine"
+    ]
+  }
+];
+
+// Datos de Servicios de Valor Agregado
+const serviciosValorAgregado = [
+  {
+    titulo: "Instalación de Equipos",
+    descripcion: "Montaje y calibración profesional de sistemas automáticos de dosificación electrónica para lavanderías y lavaplatos industriales, garantizando el consumo exacto de producto.",
+    icon: Wrench
+  },
+  {
+    titulo: "Mantenimiento Preventivo",
+    descripcion: "Visitas periódicas programadas para revisar tus sistemas de lavado, limpiar boquillas, verificar bombas y asegurar que tu operación nunca se detenga por falta de calibración.",
+    icon: ShieldCheck
+  },
+  {
+    titulo: "Capacitación de Personal",
+    descripcion: "Entrenamos a tu equipo de trabajo en las buenas prácticas de higiene, dosificación correcta, hojas de seguridad (MSDS) y manejo seguro de productos químicos.",
+    icon: GraduationCap
+  },
+  {
+    titulo: "Auditorías de Eficiencia",
+    descripcion: "Analizamos tus costos por ciclo de lavado, dureza del agua y tiempos de limpieza para optimizar el rendimiento y generar ahorros económicos reales en tu negocio.",
+    icon: FileBarChart
+  }
+];
+
+// Nuevos Datos: Servicio Técnico y Mantenimiento Especializado
+const serviciosTecnicosEspecializados = [
+  {
+    titulo: "Equipo Industrial y Lavandería",
+    descripcion: "Mantenimiento y reparación experta de equipo industrial a gas y eléctrico, optimizando el funcionamiento de sistemas pesados de lavandería comercial.",
+    icon: WashingMachine
+  },
+  {
+    titulo: "Certificación de Hornos Rational",
+    descripcion: "Servicio técnico calificado, diagnóstico avanzado y certificación oficial para el óptimo desempeño de hornos Rational bajo estándares de fábrica.",
+    icon: Cpu
+  },
+  {
+    titulo: "Líneas de Gas y Cocinas",
+    descripcion: "Instalación, reparación y diagnóstico de líneas de gas seguras y mantenimiento integral para equipos de cocina industrial de alta exigencia.",
+    icon: Flame
+  },
+  {
+    titulo: "Electricidad y Refrigeración",
+    descripcion: "Soporte en electricidad residencial e industrial, tableros de control y sistemas de refrigeración comercial para asegurar la cadena de frío.",
+    icon: Zap
+  }
+];
+---
+
+<Layout title="Dictum Limpieza | Expertos en Limpieza Industrial y del Hogar">
+  <!-- Mantiene la transición de scroll fluido -->
+  <div class="scroll-smooth">
+    <Navbar />
+
+    <!-- Hero principal -->
+    <header id="inicio" class="relative min-h-[680px] flex items-center bg-[#003B73] overflow-hidden pt-24">
+      <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1600')] bg-cover bg-center mix-blend-luminosity opacity-10"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-[#003B73] via-[#003B73]/90 to-[#002B54]/80"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          
+          <!-- Columna Izquierda -->
+          <div class="text-white">
+            <span class="bg-cyan-500/20 text-cyan-300 text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full border border-cyan-500/30">
+              Tecnología en Sanitización
+            </span>
+            
+            <!-- Título Principal con la reestructuración y color solicitados -->
+            <h1 class="text-4xl sm:text-5xl font-black tracking-tight leading-tight mb-6 mt-4">
+              <span class="block text-white">Expertos en Limpieza</span>
+              <span class="block mt-1 text-white">Avanzada para el Sector</span>
+              <span class="block mt-2 text-cyan-300">Industrial y del Hogar</span>
+            </h1>
+            
+            <p class="text-slate-300 text-lg mb-8 max-w-lg leading-relaxed">
+              Descubre sistemas avanzados de dosificación y productos industriales diseñados para garantizar la máxima higiene, ahorro y eficiencia en tu negocio u hogar.
+            </p>
+            <div class="mt-2">
+              <a href="https://wa.me/50684348317" target="_blank" class="bg-cyan-500 hover:bg-cyan-600 text-white text-base font-bold px-8 py-4 rounded-xl shadow-lg transition-all hover:scale-105 inline-block hover:shadow-cyan-500/20">
+                Solicitar Asesoría Gratuita
+              </a>
+            </div>
+          </div>
+
+          <!-- Columna Derecha -->
+          <div class="relative w-full max-w-lg mx-auto lg:max-w-none flex justify-center items-center">
+            <div class="absolute -inset-4 bg-gradient-to-tr from-cyan-400/20 to-sky-600/10 rounded-[2rem] opacity-30 blur-2xl"></div>
+            <div class="relative bg-[#002B54] p-2 rounded-[2.5rem] shadow-2xl border border-white/10 overflow-hidden w-full aspect-video">
+              <video class="w-full h-full object-cover rounded-[2rem]" autoplay muted loop playsinline preload="auto">
+                <source src="/WareDose30.mp4" type="video/mp4" />
+                Tu navegador no soporta el formato de video.
+              </video>
+              <div class="absolute inset-0 bg-gradient-to-t from-[#002B54]/30 via-transparent to-transparent pointer-events-none rounded-[2rem]"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Onda estética inferior -->
+      <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[50px] fill-slate-50">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C26.9,8.75,53.05,18,79.4,25.88,154.5,48.26,233.91,72.7,321.39,56.44Z"></path>
+        </svg>
+      </div>
+    </header>
+
+    <!-- Sección Principal del Catálogo de Productos -->
+    <main id="productos" class="bg-slate-50 py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- Encabezado del Catálogo de Productos -->
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-black text-[#003B73] tracking-tight">
+            Catálogo de Productos
+          </h2>
+          <p class="text-slate-600 max-w-xl mx-auto mt-2 text-sm sm:text-base">
+            Insumos químicos de alta concentración and fórmulas avanzadas diseñadas para garantizar la máxima higiene, desinfección y rendimiento en cada aplicación.
+          </p>
+          <div class="w-24 h-1 bg-cyan-400 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <!-- TU BLOQUE DE ASESORÍA Y DOMICILIO SE QUEDA COMENTADO AQUÍ TAL COMO LO SOLICITASTE -->
+        <!-- 
+        <div id="servicios" class="text-center mt-24 mb-4">
+          <h2 class="text-2xl sm:text-3xl font-black text-[#003B73] tracking-tight">
+            Servicio de Asesoría y Domicilio
+          </h2>
+          <p class="text-cyan-600 font-bold text-lg sm:text-xl mt-1">
+            Calidad y Servicio a su Puerta.
+          </p>
+          <div class="w-16 h-1 bg-cyan-400 mx-auto mt-3 rounded-full"></div>
+        </div> 
+        -->
+        
+        <!-- Grid del catálogo -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
+          {columnasCatalogo.map((col) => {
+            const IconComponent = col.icon;
+            
+            return (
+              <div class="bg-[#EBF7FC] rounded-2xl p-6 shadow-sm border border-cyan-100 flex flex-col h-full transform transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                
+                <div class="flex flex-col items-center text-center mb-6">
+                  <div class="h-16 w-16 bg-white rounded-2xl flex items-center justify-center mb-3 text-[#003B73] shadow-sm border border-cyan-500/10">
+                    <IconComponent size={32} strokeWidth={1.8} />
+                  </div>
+                  <h3 class="font-black text-base text-[#003B73] tracking-wide uppercase mt-2">
+                    {col.titulo}
+                  </h3>
+                  <div class="w-12 h-0.5 bg-cyan-400 mt-2"></div>
+                </div>
+
+                <ul class="space-y-2 flex-grow">
+                  {col.productos.map((prod) => (
+                    <li class="flex items-start space-x-2 text-sm text-slate-700">
+                      <span class="text-cyan-500 font-bold mt-0.5">•</span>
+                      <span class="leading-snug">{prod}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+
+        <!-- SECCIÓN: SOLUCIONES INTEGRALES (Referenciada en image_8cbc5e.png) -->
+        <section id="servicios" class="mt-24 scroll-mt-28">
+          <div class="text-center mb-16">
+            <span class="text-cyan-600 text-xs font-bold tracking-widest uppercase bg-cyan-100 px-3 py-1.5 rounded-full">
+              Más que solo Productos Químicos
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-black text-[#003B73] tracking-tight mt-3">
+              Servicios Integrales para su Negocio
+            </h2>
+            <p class="text-slate-600 max-w-xl mx-auto mt-2 text-sm sm:text-base">
+              Le aseguramos control total, dosificación exacta y acompañamiento técnico constante.
+            </p>
+            <div class="w-24 h-1 bg-cyan-400 mx-auto mt-4 rounded-full"></div>
+          </div>
+
+          <!-- Grid de Servicios de Valor Agregado -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            {serviciosValorAgregado.map((srv) => {
+              const ServiceIcon = srv.icon;
+              return (
+                <div class="bg-white rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 flex flex-col items-center text-center group transition-all duration-300 hover:shadow-lg hover:border-cyan-200">
+                  <div class="h-14 w-14 bg-cyan-50 text-cyan-600 rounded-full flex items-center justify-center mb-4 group-hover:bg-[#003B73] group-hover:text-white transition-colors duration-300">
+                    <ServiceIcon size={26} strokeWidth={2} />
+                  </div>
+                  <h4 class="font-black text-lg text-[#003B73] mb-2">
+                    {srv.titulo}
+                  </h4>
+                  <p class="text-slate-600 text-sm leading-relaxed">
+                    {srv.descripcion}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+          <!-- SUB-SECCIÓN NUEVA: MANTENIMIENTO Y SOPORTE TÉCNICO ESPECIALIZADO -->
+          <div class="bg-slate-100/70 rounded-[2rem] p-8 md:p-12 border border-slate-200/60 shadow-inner mt-12">
+            <div class="text-center mb-12">
+              <span class="text-cyan-700 text-xs font-bold tracking-widest uppercase bg-cyan-100 px-3 py-1.5 rounded-full">
+                CERTIFICACIÓN DE INGENIERÍA Y SOPORTE DE MAQUINARIA
+              </span>
+              <h3 class="text-2xl sm:text-3xl font-black text-[#003B73] tracking-tight mt-3">
+                Mantenimiento y Soporte Técnico Especializado
+              </h3>
+              <p class="text-slate-600 max-w-xl mx-auto mt-2 text-sm">
+                Infraestructura electromecánica, redes de servicios esenciales y calibración certificada para garantizar la continuidad de sus operaciones operativas.
+              </p>
+            </div>
+
+            <!-- Grid de Servicios Técnicos Especializados -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {serviciosTecnicosEspecializados.map((srv) => {
+                const TechIcon = srv.icon;
+                return (
+                  <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col items-center text-center group transition-all duration-300 hover:shadow-md hover:border-cyan-300">
+                    <div class="h-14 w-14 bg-cyan-50 text-cyan-600 rounded-full flex items-center justify-center mb-4 group-hover:bg-[#003B73] group-hover:text-white transition-colors duration-300">
+                      <TechIcon size={26} strokeWidth={2} />
+                    </div>
+                    <h4 class="font-black text-base text-[#003B73] mb-2">
+                      {srv.titulo}
+                    </h4>
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                      {srv.descripcion}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- BOTÓN DE WHATSAPP MEJORADO CON TOOLTIP FLOTANTE PREMIUM -->
+    <div class="fixed bottom-6 right-6 z-50 flex items-center group">
+      <span class="mr-3 bg-[#003B73] text-white text-xs font-bold px-3 py-2 rounded-xl shadow-xl border border-white/10 opacity-0 -translate-x-2 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 whitespace-nowrap">
+        ¿En qué podemos ayudarte?
+      </span>
+      <a 
+        href="https://wa.me/50684348317" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="transition-all duration-300 hover:scale-110 drop-shadow-[0_8px_16px_rgba(0,0,0,0.15)] flex items-center justify-center"
+        aria-label="Contactar por WhatsApp"
+      >
+        <svg class="w-14 h-14 sm:w-16 sm:h-16" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 48 48">
+          <path fill="#fff" d="M4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5c5.1,0,9.8,2,13.4,5.6 C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19c0,0,0,0,0,0h0c-3.2,0-6.3-0.8-9.1-2.3L4.9,43.3z"></path>
+          <path fill="#fff" d="M4.9,43.8c-0.1,0-0.3-0.1-0.4-0.1c-0.1-0.1-0.2-0.3-0.1-0.5L7,33.5c-1.6-2.9-2.5-6.2-2.5-9.6 C4.5,13.2,13.3,4.5,24,4.5c5.2,0,10.1,2,13.8,5.7c3.7,3.7,5.7,8.6,5.7,13.8c0,10.7-8.7,19.5-19.5,19.5c-3.2,0-6.3-0.8-9.1-2.3 L5,43.8C5,43.8,4.9,43.8,4.9,43.8z"></path>
+          <path fill="#cfd8dc" d="M24,5c5.1,0,9.8,2,13.4,5.6C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19h0c-3.2,0-6.3-0.8-9.1-2.3 L4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5 M24,43L24,43L24,43 M24,43L24,43L24,43 M24,4 shadow-none c0,0,0,0,0,0C13,4,4,13,4,24c0,3.4,0.8,6.7,2.5,9.6L3.9,43c-0.1,0.3,0,0.7,0.3,1c0.2,0.2,0.4,0.3,0.7,0.3c0.1,0,0.2,0,0.3,0l9.7-2.5c2.8,1.5,6,2.2,9.2,2.2c11,0,20-9,20-20c0-5.3-2.1-10.4-5.8-14.1C34.4,6.1,29.4,4,24,4L24,4z"></path>
+          <path fill="#40c351" d="M35.2,12.8c-3-3-6.9-4.6-11.2-4.6C15.3,8.2,8.2,15.3,8.2,24c0,3,0.8,5.9,2.4,8.4L11,33l-1.6,5.8 l6-1.6l0.6,0.3c2.4,1.4,5.2,2.2,8,2.2h0c8.7,0,15.8-7.1,15.8-15.8C39.8,19.8,38.2,15.8,35.2,12.8z"></path>
+          <path fill="#fff" fill-rule="evenodd" d="M19.3,16c-0.4-0.8-0.7-0.8-1.1-0.8c-0.3,0-0.6,0-0.9,0s-0.8,0.1-1.3,0.6c-0.4,0.5-1.7,1.6-1.7,4s1.7,4.6,1.9,4.9s3.3,5.3,8.1,7.2c4,1.6,4.8,1.3,5.7,1.2c0.9-0.1,2.8-1.1,3.2-2.3c0.4-1.1,0.4-2.1,0.3-2.3c-0.1-0.2-0.4-0.3-0.9-0.6s-2.8-1.4-3.2-1.5c-0.4-0.2-0.8-0.2-1.1,0.2c-0.3,0.5-1.2,1.5-1.5,1.9c-0.3,0.3-0.6,0.4-1,0.1c-0.5-0.2-2-0.7-3.8-2.4c-1.4-1.3-2.4-2.8-2.6-3.3c-0.3-0.5,0-0.7,0.2-1c0.2-0.2,0.5-0.6,0.7-0.8c0.2-0.3,0.3-0.5,0.5-0.8c0.2-0.3,0.1-0.6,0-0.8C20.6,19.3,19.7,17,19.3,16z" clip-rule="evenodd"></path>
+        </svg>
+      </a>
+    </div>
+
+    <Footer />
+  </div>
+</Layout>
